@@ -62,9 +62,19 @@ Route::middleware([
     Route::post('/course/updatework', [CourseController::class, 'Editwork'])->name('dashboard.Editwork');
     Route::get('/course/deletework/{id}',[CourseController::class,'Delwork'])->name('dashboard.Delwork');
     Route::post('/work/givepoint',[CourseController::class,'givepoint'])->name('givepoint');
+    //for import export
+    Route::get('/importexport',[App\Http\Controllers\ImportExportController::class, 'index']);
+    Route::post('/importxls',[App\Http\Controllers\ImportExportController::class, 'import_xls']);
+    Route::get('/exportxls',[App\Http\Controllers\ImportExportController::class, 'export_xls']);
+    Route::get('/checkatt',[App\Http\Controllers\CheckAttController::class, 'checkatt']);
+    Route::post('/addcheckatt',[App\Http\Controllers\CheckAttController::class, 'addcheckatt'])->name('addcheckatt');
+    Route::get('/check_detail',[App\Http\Controllers\CheckAttController::class, 'check_detail'])->name('check_detail');
+    Route::get('/checkatt',[App\Http\Controllers\CheckAttController::class, 'showCheck']);
     });
     //Student
     Route::middleware(['auth', 'check:3'])->group(function () {
 
     });
+
+
 });
